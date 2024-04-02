@@ -3,6 +3,8 @@ import * as express from "express";
 import { Request, Response } from "express";
 import { errorHandler } from "./middlewares/error.middleware";
 import "reflect-metadata";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.json());
