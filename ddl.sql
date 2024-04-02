@@ -1,0 +1,20 @@
+CREATE DATABASE "bookapi";
+
+GRANT ALL PRIVILEGES ON DATABASE "bookapi" TO "postgres";
+
+\c "bookapi";
+
+CREATE TABLE IF NOT EXISTS "user" (
+  "id" SERIAL PRIMARY KEY,
+  "firstName" VARCHAR(255) NOT NULL,
+  "lastName" VARCHAR(255) NOT NULL,
+  "age" INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "book" (
+  "id" SERIAL PRIMARY KEY,
+  "name" VARCHAR(255) NOT NULL,
+  "score" INT NOT NULL DEFAULT -1,
+  "userId" INT,
+  CONSTRAINT "FK_userId" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
