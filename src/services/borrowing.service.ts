@@ -23,7 +23,7 @@ export class BorrowingService {
 
   async returnBook(user: any, book: any, score: number): Promise<any | undefined> {
     const borrowing = await this.borrowingRepository.findOne({
-      where: { user, book, status: 'present' },
+      where: { user: { id: user.id }, book: { id: book.id }, status: 'present'},
     });
     if (!borrowing) {
       return null;

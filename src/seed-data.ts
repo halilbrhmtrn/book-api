@@ -41,6 +41,7 @@ export const bulkInsertSeedData = async (AppDataSource) => {
           user: { id: borrowing.userId },
           book: { id: borrowing.bookId },
           status: borrowing.status,
+          score: borrowing.score,
         });
         return borrowingRepository.save(cr);
       })
