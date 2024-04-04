@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { User } from './User';
+import { Borrowing } from './Borrowing';
 
 @Entity()
 export class Book {
@@ -9,10 +10,7 @@ export class Book {
   @Column()
   name: string;
 
-  @Column({ default: -1 })
-  score: number;
-
-  @ManyToOne(() => User, user => user.books)
-  user: User;
+  @OneToMany(() => Borrowing, borrowing => borrowing.book)
+  borrowings: Borrowing[];
 }
 

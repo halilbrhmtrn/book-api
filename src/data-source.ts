@@ -3,6 +3,7 @@ import { DataSource } from "typeorm"
 import * as dotenv from "dotenv";
 import { User } from "./entity/User"
 import { Book } from "./entity/Book"
+import { Borrowing } from "./entity/Borrowing";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     database: DB_DATABASE,
     synchronize: true,
     logging: false,
-    entities: [User, Book],
+    entities: [User, Book, Borrowing],
     migrations: [],
     subscribers: [],
     dropSchema: true

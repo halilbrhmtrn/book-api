@@ -2,15 +2,11 @@ import * as express from 'express';
 import * as Joi from 'joi';
 
 export const createUserSchema = Joi.object({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  age: Joi.number().integer().min(0).required(),
+  name: Joi.string().required(),
 });
 
 export const updateUserSchema = Joi.object({
-  firstName: Joi.string(),
-  lastName: Joi.string(),
-  age: Joi.number().integer().min(0),
+  name: Joi.string(),
 });
 
 export const userIdParamSchema = Joi.object({

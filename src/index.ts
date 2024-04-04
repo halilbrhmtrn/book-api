@@ -6,6 +6,8 @@ import userRouter from "./routes/user.routes";
 import bookRouter from "./routes/book.routes";
 import "reflect-metadata";
 import * as dotenv from "dotenv";
+import { bulkInsertSeedData } from "./seed-data";
+
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,7 @@ app.get("*", (req: Request, res: Response) => {
 
 AppDataSource.initialize()
   .then(async () => {
+    await bulkInsertSeedData(AppDataSource); 
     app.listen(PORT, () => {
       console.log("Server is running on http://localhost:" + PORT);
     });
